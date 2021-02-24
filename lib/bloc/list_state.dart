@@ -18,6 +18,6 @@ class SortedListState extends ListState {
   SortedListState(this.offices);
 }
 
-class ListLoadingFailedState extends ListState {
-  const ListLoadingFailedState();
+class FailedLoadingListState extends ListState {
+  const FailedLoadingListState();
 }

@@ -16,7 +16,7 @@ class ListBloc extends Bloc<ListEvent, ListState> {
       if (officesList.isNotEmpty) {
         yield ListSuccessState(officesList);
       } else {
-        yield ListLoadingFailedState();
+        yield FailedLoadingListState();
       }
       return;
     }
@@ -68,6 +68,6 @@ class ListBloc extends Bloc<ListEvent, ListState> {
       currentState.offices = officesList;
       return ListSuccessState(currentState.offices);
     }
-    return ListLoadingFailedState();
+    return FailedLoadingListState();
   }
 }

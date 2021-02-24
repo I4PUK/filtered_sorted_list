@@ -67,7 +67,7 @@ class HomePageState extends State<HomePage> {
                 ),
               );
             }
-            if (state is ListLoadingFailedState) {
+            if (state is FailedLoadingListState) {
               return Expanded(
                 child: Center(
                   child: Text('Download failed'),
@@ -111,7 +111,7 @@ class HomePageState extends State<HomePage> {
         key: Key('builder ${selectedListItem.toString()}'),
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        itemCount: officesList.length ?? 0,
+        itemCount: 9,
         itemBuilder: (BuildContext context, int index) {
           return ExpansionTile(
             key: Key(index.toString()),
