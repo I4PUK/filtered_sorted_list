@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -116,7 +114,7 @@ class HomePageState extends State<HomePage> {
         itemCount: officesList.length ?? 0,
         itemBuilder: (BuildContext context, int index) {
           return ExpansionTile(
-            key: Key(index.toString()), //attention
+            key: Key(index.toString()),
             initiallyExpanded: index == selectedListItem,
             title: Text(officesList[index].name),
             onExpansionChanged: ((newState) {

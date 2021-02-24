@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_unikoom/models/office/office.dart';
-import 'package:test_unikoom/models/offices_list/offices_list.dart';
 import 'package:test_unikoom/services/offices_service.dart';
 
 part 'list_event.dart';
@@ -55,7 +54,7 @@ class ListBloc extends Bloc<ListEvent, ListState> {
 
   Future<List<Office>> _getOfficesList() async {
     final getRequest = await OfficesService.getOfficesList();
-    return getRequest.offices;
+    return getRequest.offices ?? [];
   }
 
   ListState _sortList() {
