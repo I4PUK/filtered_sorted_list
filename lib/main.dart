@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       home: Scaffold(
         body: BlocProvider(
           create: (context) =>
@@ -57,49 +56,51 @@ class HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          searchTF(),
+          searchTextField(),
           SizedBox(height: 8),
-          BlocBuilder<ListBloc, ListState>(builder: (context, state) {
-            if (state is LoadingListState) {
-              return Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-            if (state is FailedLoadingListState) {
-              return Expanded(
-                child: Center(
-                  child: Text('Download failed'),
-                ),
-              );
-            }
-            if (state is ListSuccessState) {
-              if (state.offices.isEmpty) {
+          BlocBuilder<ListBloc, ListState>(
+            builder: (context, state) {
+              if (state is LoadingListState) {
                 return Expanded(
                   child: Center(
-                    child: Text('No posts'),
+                    child: CircularProgressIndicator(),
                   ),
                 );
               }
-              return list(state.offices);
-            }
-            if (state is SortedListState) {
-              if (state.offices.isEmpty) {
+              if (state is FailedLoadingListState) {
                 return Expanded(
                   child: Center(
-                    child: Text('No posts'),
+                    child: Text('Download failed'),
                   ),
                 );
               }
-              return list(state.offices);
-            }
-            return Expanded(
-              child: Center(
-                child: Text('Error'),
-              ),
-            );
-          }),
+              if (state is ListSuccessState) {
+                if (state.offices.isEmpty) {
+                  return Expanded(
+                    child: Center(
+                      child: Text('No posts'),
+                    ),
+                  );
+                }
+                return list(state.offices);
+              }
+              if (state is SortedListState) {
+                if (state.offices.isEmpty) {
+                  return Expanded(
+                    child: Center(
+                      child: Text('No posts'),
+                    ),
+                  );
+                }
+                return list(state.offices);
+              }
+              return Expanded(
+                child: Center(
+                  child: Text('Error'),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
@@ -169,7 +170,7 @@ class HomePageState extends State<HomePage> {
     );
   }
 
-  Widget searchTF() {
+  Widget searchTextField() {
     return TextField(
       decoration: InputDecoration(
         border: OutlineInputBorder(
