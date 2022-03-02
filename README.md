@@ -6,6 +6,6 @@
 ## Технологии 
 В проекте использовались технологии:
   - Dart/Flutter
-  - API: https://api.imgbb.com/
+  - API: https://about.google/static/
   - Для запросов к API: http
   - State manager: Bloc
